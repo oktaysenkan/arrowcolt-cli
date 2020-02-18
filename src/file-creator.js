@@ -73,7 +73,7 @@ module.exports = {
     for (let [key, value] of Object.entries(files)) {
       fse
         .outputFile(
-          `${process.cwd()}/src/${fileType.toLowerCase()}s/${key}`,
+          `${process.cwd()}/src/${fileType.toLowerCase()}s/${fileName}/${key}`,
           value
         )
         .then(() => {
