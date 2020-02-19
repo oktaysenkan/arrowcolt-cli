@@ -1,6 +1,6 @@
 {
   "name": "arrowcolt-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Command line helper for React Native.",
   "main": "index.js",
   "scripts": {
