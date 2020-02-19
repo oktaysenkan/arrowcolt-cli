@@ -8,8 +8,12 @@
   },
   "author": "Oktay Şenkan",
   "license": "ISC",
+  "bin": {
+    "arrow-cli": "index.js"
+  },
   "dependencies": {
     "colors": "^1.4.0",
+    "figlet": "^1.2.4",
     "fs-extra": "^8.1.0",
     "inquirer": "^7.0.4"
   }
