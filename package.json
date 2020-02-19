@@ -1,6 +1,6 @@
 {
   "name": "arrowcolt-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Command line helper for React Native.",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   "author": "Oktay Şenkan",
   "license": "ISC",
   "bin": {
-    "arrow-cli": "index.js"
+    "arrowcolt": "index.js"
   },
   "dependencies": {
     "colors": "^1.4.0",
