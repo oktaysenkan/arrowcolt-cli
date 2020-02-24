@@ -6,12 +6,9 @@ module.exports = {
       message: "What do you want to create?",
       choices: [
         "Component",
+        "Screen",
         {
           name: "Config",
-          disabled: "Unavailable right now!"
-        },
-        {
-          name: "Screen",
           disabled: "Unavailable right now!"
         },
         {
@@ -40,5 +37,11 @@ module.exports = {
       message: "Are you using TypeScript?",
       choices: ["Yes", "No"]
     }
-  ]
+  ],
+  navigationName: [
+    {
+      name: "navigationName",
+      message: `Is this depended any navigation screen? (Optional)`,
+    }
+  ],
 };

@@ -17,10 +17,16 @@ const main = async () => {
   const { fileName } = await inquirer.prompt(prompts.fileName(fileType));
   result.fileName = fileName;
 
+
+  if (fileType === 'Screen') {
+    const { navigationName } = await inquirer.prompt(prompts.navigationName);
+    result.navigationName = navigationName;
+  }
+
   // const { fileExtension } = await inquirer.prompt(prompts.fileExtension);
   // result.fileExtension = fileExtension ? "ts" : "js";
 
-  createFiles(result.fileType, result.fileName, "ts");
+  createFiles(result.fileType, result.fileName, "ts", result.navigationName);
 };
 
 main();

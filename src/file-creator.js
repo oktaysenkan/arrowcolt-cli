@@ -67,7 +67,7 @@ const ${fileName} = () => {
   );
 };
 
-export default ${fileName};    
+export default ${fileName};
 `,
     [`${fileName}.style.${fileExtension}`]: `import { StyleSheet } from 'react-native';
 import Styles from '../../styles';
@@ -99,28 +99,29 @@ const getFiles = (fileType, fileName, fileExtension) => {
   switch (fileType.toLowerCase()) {
     case fileTypes.COMPONENT:
       return component(fileName, fileExtension);
-    case fileTypes.CONFIG:
-      return screen(fileName, fileExtension);
     case fileTypes.SCREEN:
-      return screenBody;
+      return screen(fileName, fileExtension);
+    case fileTypes.CONFIG:
+      return null;
     case fileTypes.STYLE:
-      return styleBody;
+      return null;
     case fileTypes.UTIL:
-      return utilBody;
+      return null;
     default:
       throw new Error("Unknown file type.");
   }
 };
 
 module.exports = {
-  createFiles: (fileType, fileName, fileExtension = "js") => {
+  createFiles: (fileType, fileName, fileExtension = "js", navigationName) => {
     const files = getFiles(fileType, fileName, fileExtension);
+    const dependedNavigation = navigationName ? `${navigationName}/tabs/` : '';
 
     console.log();
     for (let [key, value] of Object.entries(files)) {
       fse
         .outputFile(
-          `${process.cwd()}/src/${fileType.toLowerCase()}s/${fileName}/${key}`,
+          `${process.cwd()}/src/${fileType.toLowerCase()}s/${dependedNavigation}${fileName}/${key}`,
           value
         )
         .then(() => {
