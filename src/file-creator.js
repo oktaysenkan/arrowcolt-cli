@@ -11,7 +11,7 @@ const fileTypes = {
 
 const component = (fileName, fileExtension) => {
   return {
-    [`${fileName}.${fileExtension}`]: `import React from 'react';
+    [`${fileName}.${fileExtension}x`]: `import React from 'react';
 import { View, Text } from 'react-native';
 import Style from './${fileName}.style';
 
@@ -25,26 +25,73 @@ const ${fileName}: React.FC<Props> = props => {
   const combinedStyle = Object.assign({}, Style.default, style);
   return (
     <View {...props} style={combinedStyle}>
-      <Text style={Style.text}>{children}</Text>
+      <Text>{children}</Text>
     </View>
   );
 };
-    
+
 export default ${fileName};
-    `,
+`,
     [`${fileName}.style.${fileExtension}`]: `import { StyleSheet } from 'react-native';
 import Styles from '../../styles';
-    
+
 export default StyleSheet.create({
   default: {
     backgroundColor: Styles.Colors.white,
   },
 });
-    `,
+`,
     [`index.${fileExtension}`]: `import ${fileName} from './${fileName}';
 
 export default ${fileName};
-    `
+`
+  };
+};
+
+const screen = (fileName, fileExtension) => {
+  return {
+    [`${fileName}.${fileExtension}x`]: `import React from 'react';
+import { Text, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
+import Style from './${fileName}.style';
+import { Button } from '../../components';
+
+const ${fileName} = () => {
+  const navigation = useNavigation();
+
+  return (
+    <View style={Style.container}>
+      <Text style={Style.defaultText}>By signing up I aggree with</Text>
+    </View>
+  );
+};
+
+export default ${fileName};    
+`,
+    [`${fileName}.style.${fileExtension}`]: `import { StyleSheet } from 'react-native';
+import Styles from '../../styles';
+
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingHorizontal: Styles.Spacing.containerPaddingHorizontal,
+    paddingTop: Styles.Spacing.containerPaddingTop,
+    paddingBottom: Styles.Spacing.containerPaddingBottom,
+    backgroundColor: Styles.Colors.black,
+    display: 'flex',
+  },
+  defaultText: {
+    color: '#545454',
+    fontSize: 13,
+    fontFamily: Styles.Fonts.SourcecallBook,
+  },
+});
+`,
+    [`index.${fileExtension}`]: `import ${fileName} from './${fileName}';
+
+export default ${fileName};
+`
   };
 };
 
@@ -53,7 +100,7 @@ const getFiles = (fileType, fileName, fileExtension) => {
     case fileTypes.COMPONENT:
       return component(fileName, fileExtension);
     case fileTypes.CONFIG:
-      return configBody;
+      return screen(fileName, fileExtension);
     case fileTypes.SCREEN:
       return screenBody;
     case fileTypes.STYLE:

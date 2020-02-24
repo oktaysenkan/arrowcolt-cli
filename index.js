@@ -17,10 +17,10 @@ const main = async () => {
   const { fileName } = await inquirer.prompt(prompts.fileName(fileType));
   result.fileName = fileName;
 
-  const { fileExtension } = await inquirer.prompt(prompts.fileExtension);
-  result.fileExtension = fileExtension ? "ts" : "js";
+  // const { fileExtension } = await inquirer.prompt(prompts.fileExtension);
+  // result.fileExtension = fileExtension ? "ts" : "js";
 
-  createFiles(result.fileType, result.fileName, result.fileExtension);
+  createFiles(result.fileType, result.fileName, "ts");
 };
 
 main();
