@@ -48,14 +48,15 @@ export default ${fileName};
   };
 };
 
-const screen = (fileName, fileExtension) => {
+const screen = (fileName, fileExtension, navigationName) => {
+  const dependedBackward = navigationName ? "../../" : "";
   return {
     [`${fileName}.${fileExtension}x`]: `import React from 'react';
 import { Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import Style from './${fileName}.style';
-import { Button } from '../../components';
+import { Button } from '${dependedBackward}../../components';
 
 const ${fileName} = () => {
   const navigation = useNavigation();
@@ -70,7 +71,7 @@ const ${fileName} = () => {
 export default ${fileName};
 `,
     [`${fileName}.style.${fileExtension}`]: `import { StyleSheet } from 'react-native';
-import Styles from '../../styles';
+import Styles from '${dependedBackward}../../styles';
 
 export default StyleSheet.create({
   container: {
@@ -95,12 +96,12 @@ export default ${fileName};
   };
 };
 
-const getFiles = (fileType, fileName, fileExtension) => {
+const getFiles = (fileType, fileName, fileExtension, navigationName) => {
   switch (fileType.toLowerCase()) {
     case fileTypes.COMPONENT:
       return component(fileName, fileExtension);
     case fileTypes.SCREEN:
-      return screen(fileName, fileExtension);
+      return screen(fileName, fileExtension, navigationName);
     case fileTypes.CONFIG:
       return null;
     case fileTypes.STYLE:
@@ -114,8 +115,8 @@ const getFiles = (fileType, fileName, fileExtension) => {
 
 module.exports = {
   createFiles: (fileType, fileName, fileExtension = "js", navigationName) => {
-    const files = getFiles(fileType, fileName, fileExtension);
-    const dependedNavigation = navigationName ? `${navigationName}/tabs/` : '';
+    const files = getFiles(fileType, fileName, fileExtension, navigationName);
+    const dependedNavigation = navigationName ? `${navigationName}/tabs/` : "";
 
     console.log();
     for (let [key, value] of Object.entries(files)) {
