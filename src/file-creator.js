@@ -103,11 +103,9 @@ const getFiles = (fileType, fileName, fileExtension, navigationName) => {
     case fileTypes.SCREEN:
       return screen(fileName, fileExtension, navigationName);
     case fileTypes.CONFIG:
-      return null;
     case fileTypes.STYLE:
-      return null;
     case fileTypes.UTIL:
-      return null;
+      throw new Error("This feature is not avaiable right now!");
     default:
       throw new Error("Unknown file type.");
   }
@@ -116,15 +114,14 @@ const getFiles = (fileType, fileName, fileExtension, navigationName) => {
 module.exports = {
   createFiles: (fileType, fileName, fileExtension = "js", navigationName) => {
     const files = getFiles(fileType, fileName, fileExtension, navigationName);
+
     const dependedNavigation = navigationName ? `${navigationName}/tabs/` : "";
+    const filePath = `${process.cwd()}/src/${fileType.toLowerCase()}s/${dependedNavigation}${fileName}/${key}`;
 
     console.log();
     for (let [key, value] of Object.entries(files)) {
       fse
-        .outputFile(
-          `${process.cwd()}/src/${fileType.toLowerCase()}s/${dependedNavigation}${fileName}/${key}`,
-          value
-        )
+        .outputFile(filePath, value)
         .then(() => {
           console.log(`${key}`.green.bold + ` is created!`.green);
         })
@@ -132,5 +129,6 @@ module.exports = {
           console.error(`${err}`.red);
         });
     }
+    console.log();
   }
 };
