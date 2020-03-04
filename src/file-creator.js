@@ -116,12 +116,12 @@ module.exports = {
     const files = getFiles(fileType, fileName, fileExtension, navigationName);
 
     const dependedNavigation = navigationName ? `${navigationName}/tabs/` : "";
-    const filePath = `${process.cwd()}/src/${fileType.toLowerCase()}s/${dependedNavigation}${fileName}/${key}`;
+    const filePath = `${process.cwd()}/src/${fileType.toLowerCase()}s/${dependedNavigation}${fileName}`;
 
     console.log();
     for (let [key, value] of Object.entries(files)) {
       fse
-        .outputFile(filePath, value)
+        .outputFile(`${filePath}/${key}`, value)
         .then(() => {
           console.log(`${key}`.green.bold + ` is created!`.green);
         })
