@@ -17,8 +17,7 @@ const main = async () => {
   const { fileName } = await inquirer.prompt(prompts.fileName(fileType));
   result.fileName = fileName;
 
-
-  if (fileType === 'Screen') {
+  if (fileType === "Screen") {
     const { navigationName } = await inquirer.prompt(prompts.navigationName);
     result.navigationName = navigationName;
   }
