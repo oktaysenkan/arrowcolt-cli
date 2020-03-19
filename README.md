@@ -2,7 +2,7 @@
 
 Command line helper for React Native.
 
-![image](https://user-images.githubusercontent.com/42527467/75474281-c358ab00-59a7-11ea-99c7-7c334301401b.png)
+![image](https://user-images.githubusercontent.com/42527467/77118016-4b305300-6a44-11ea-915a-5578d2cc791c.png)
 
 ### Folder structure
 
