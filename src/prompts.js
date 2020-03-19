@@ -7,10 +7,7 @@ module.exports = {
       choices: [
         "Component",
         "Screen",
-        {
-          name: "Config",
-          disabled: "Unavailable right now!"
-        },
+        "Config",
         {
           name: "Style",
           disabled: "Unavailable right now!"
@@ -41,7 +38,7 @@ module.exports = {
   navigationName: [
     {
       name: "navigationName",
-      message: `Is this depended any navigation screen? (Optional)`,
+      message: `Is this depended any navigation screen? (Optional)`
     }
-  ],
+  ]
 };

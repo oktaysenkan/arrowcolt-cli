@@ -96,6 +96,15 @@ export default ${fileName};
   };
 };
 
+const config = (fileName, fileExtension) => {
+  return {
+    [`${fileName}.${fileExtension}x`]: `export default {
+  URL: 'www.google.com',
+};
+`
+  };
+};
+
 const getFiles = (fileType, fileName, fileExtension, navigationName) => {
   switch (fileType.toLowerCase()) {
     case fileTypes.COMPONENT:
@@ -103,6 +112,7 @@ const getFiles = (fileType, fileName, fileExtension, navigationName) => {
     case fileTypes.SCREEN:
       return screen(fileName, fileExtension, navigationName);
     case fileTypes.CONFIG:
+      return config(fileName, fileExtension);
     case fileTypes.STYLE:
     case fileTypes.UTIL:
       throw new Error("This feature is not avaiable right now!");
@@ -115,8 +125,14 @@ module.exports = {
   createFiles: (fileType, fileName, fileExtension = "js", navigationName) => {
     const files = getFiles(fileType, fileName, fileExtension, navigationName);
 
+    const mustInFolder = ["screen", "component"];
+
+    const folderName = mustInFolder.includes(fileType.toLowerCase())
+      ? fileName
+      : "";
     const dependedNavigation = navigationName ? `${navigationName}/tabs/` : "";
-    const filePath = `${process.cwd()}/src/${fileType.toLowerCase()}s/${dependedNavigation}${fileName}`;
+
+    const filePath = `${process.cwd()}/src/${fileType.toLowerCase()}s/${dependedNavigation}${folderName}`;
 
     console.log();
     for (let [key, value] of Object.entries(files)) {
