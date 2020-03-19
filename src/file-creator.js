@@ -105,11 +105,20 @@ const config = (fileName, fileExtension) => {
   };
 };
 
-const styles = (fileName, fileExtension) => {
+const style = (fileName, fileExtension) => {
   return {
     [`${fileName}.${fileExtension}x`]: `export default {
   PRIMARY_COLOR: '#002b36',
 };
+`
+  };
+};
+
+const util = (fileName, fileExtension) => {
+  return {
+    [`${fileName}.${fileExtension}x`]: `const debug = (log: string) => {
+  console.log(log);
+}
 `
   };
 };
@@ -123,9 +132,9 @@ const getFiles = (fileType, fileName, fileExtension, navigationName) => {
     case fileTypes.CONFIG:
       return config(fileName, fileExtension);
     case fileTypes.STYLE:
-      return styles(fileName, fileExtension);
+      return style(fileName, fileExtension);
     case fileTypes.UTIL:
-      throw new Error("This feature is not avaiable right now!");
+      return util(fileName, fileExtension);
     default:
       throw new Error("Unknown file type.");
   }
@@ -144,7 +153,6 @@ module.exports = {
 
     const filePath = `${process.cwd()}/src/${fileType.toLowerCase()}s/${dependedNavigation}${folderName}`;
 
-    console.log();
     for (let [key, value] of Object.entries(files)) {
       fse
         .outputFile(`${filePath}/${key}`, value)

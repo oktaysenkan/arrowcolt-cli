@@ -4,16 +4,7 @@ module.exports = {
       type: "list",
       name: "fileType",
       message: "What do you want to create?",
-      choices: [
-        "Component",
-        "Screen",
-        "Config",
-        "Style",
-        {
-          name: "Util",
-          disabled: "Unavailable right now!"
-        }
-      ]
+      choices: ["Component", "Screen", "Config", "Style", "Util"]
     }
   ],
   fileName: fileType => [
