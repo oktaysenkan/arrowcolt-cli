@@ -8,10 +8,7 @@ module.exports = {
         "Component",
         "Screen",
         "Config",
-        {
-          name: "Style",
-          disabled: "Unavailable right now!"
-        },
+        "Style",
         {
           name: "Util",
           disabled: "Unavailable right now!"

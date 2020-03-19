@@ -105,6 +105,15 @@ const config = (fileName, fileExtension) => {
   };
 };
 
+const styles = (fileName, fileExtension) => {
+  return {
+    [`${fileName}.${fileExtension}x`]: `export default {
+  PRIMARY_COLOR: '#002b36',
+};
+`
+  };
+};
+
 const getFiles = (fileType, fileName, fileExtension, navigationName) => {
   switch (fileType.toLowerCase()) {
     case fileTypes.COMPONENT:
@@ -114,6 +123,7 @@ const getFiles = (fileType, fileName, fileExtension, navigationName) => {
     case fileTypes.CONFIG:
       return config(fileName, fileExtension);
     case fileTypes.STYLE:
+      return styles(fileName, fileExtension);
     case fileTypes.UTIL:
       throw new Error("This feature is not avaiable right now!");
     default:
