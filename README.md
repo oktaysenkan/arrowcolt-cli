@@ -4,6 +4,22 @@ Command line helper for React Native.
 
 ![image](https://user-images.githubusercontent.com/42527467/77118016-4b305300-6a44-11ea-915a-5578d2cc791c.png)
 
+## Installation
+
+```bash
+$ npm i arrowcolt-cli -g
+```
+
+## Usage
+
+```bash
+$ arrowcolt
+```
+
+```bash
+$ npx arrowcolt
+```
+
 ### Folder structure
 
 ```text
