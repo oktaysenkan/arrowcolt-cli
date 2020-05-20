@@ -2,7 +2,7 @@
 
 Command line helper for React Native.
 
-[![asciicast](https://asciinema.org/a/tmZgajTGyC4TdGsKWxiLnzPtG.svg)](https://asciinema.org/a/tmZgajTGyC4TdGsKWxiLnzPtG)
+[![asciicast](https://asciinema.org/a/0eBpDfA3seX3xjMB4y7P7IORL.svg)](https://asciinema.org/a/0eBpDfA3seX3xjMB4y7P7IORL)
 
 ## Installation
 
