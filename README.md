@@ -2,7 +2,7 @@
 
 Command line helper for React Native.
 
-![image](https://user-images.githubusercontent.com/42527467/77118016-4b305300-6a44-11ea-915a-5578d2cc791c.png)
+[![asciicast](https://asciinema.org/a/tmZgajTGyC4TdGsKWxiLnzPtG.svg)](https://asciinema.org/a/tmZgajTGyC4TdGsKWxiLnzPtG)
 
 ## Installation
 
